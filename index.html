@@ -1,283 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Aerolineas</title>
+    <link rel="stylesheet"
+        href="https://prod-bco.netactica.com/Portals/_default/skins/xcillion/bootstrap/css/bootstrap.css">
+    <style>
+        /* aerolineas */
+
+        .content-aerolinea {
+            border: 1px solid #EAEAEA;
+            padding: 15px 10px;
+            position: relative;
+            width: 100%;
+        }
+
+        .content-aerolinea a {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            color: transparent;
+        }
+
+        .panel-aerolinea {
+            margin-bottom: 15px;
+        }
+
+        .content-aerolinea span {
+            font-size: 10px !important;
+        }
+    </style>
 </head>
+
 <body>
-    <div id="aerolineas"></div>
-
+    <h1 style="text-align: center;">Aerolíneas</h1>
+    <div class="container" id="aerolineas"></div>
     <script>
-        let data = [
-            {
-                "url": "https://www.avianca.com/co/es/sobre-nosotros/informacion-legal/contrato-transporte/",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Aerogal.svg",
-                "text": "Aerogal"
-            },
-            {
-                "url": "https://www.aerolineas.com.ar/legales?tab=condicionestransporte",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/AerolineasArgentinas.svg",
-                "text": "Aerolineas Argentinas"
-            },
-            {
-                "url": "https://aeromexico.com/es-es/informacion-legal",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/AeroMexico.svg",
-                "text": "Aeroméxico"
-            },
-            {
-                "url": "https://www.aircanada.com/co/es/aco/home/legal/conditions-carriage-tariffs.html",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/AirCanada.svg",
-                "text": "Air\n                        Canada"
-            },
-            {
-                "url": "https://www.airchina.es/ES/ES/conditions/",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/AirChina.svg",
-                "text": "Air\n                        China"
-            },
-            {
-                "url": "https://www.aireuropa.com/co/es/aea/informacion-para-volar/condiciones.html",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/AirEuropa.svg",
-                "text": "Air\n                        Europa"
-            },
-            {
-                "url": "https://www.airfrance.com.co/CO/es/common/transverse/footer/edito_cgt1_airfrance.htm",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/AirFrance.svg",
-                "text": "Air\n                        France"
-            },
-            {
-                "url": "https://www.airasia.com/my/en/about-us/terms-and-conditions.pa",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Airasia.png",
-                "text": "Airasia"
-            },
-            {
-                "url": "https://www.alitalia.com/es_es/booking/general-conditions-of-carriage.html",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Alitalia.svg",
-                "text": "Alitalia"
-            },
-            {
-                "url": "https://www.aa.com/i18n/customer-service/support/conditions-of-carriage.jsp",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/AmericanAirlines.svg",
-                "text": "American Airlines"
-            },
-            {
-                "url": "https://flyasiana.com/C/ES/ES/contents/terms-of-transportation-and-notification",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Asiana.svg",
-                "text": "Asiana\n                        Airlines"
-            },
-            {
-                "url": "https://www.avianca.com/co/es/sobre-nosotros/informacion-legal/contrato-transporte/",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Avianca.svg",
-                "text": "Avianca"
-            },
-            {
-                "url": "https://www.voeazul.com.br/py/es/home",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Azul.svg",
-                "text": "Azul"
-            },
-            {
-                "url": "https://www.britishairways.com/en-gb/information/legal/conditions-of-carriage",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/BritishAirways.svg",
-                "text": "British Airways"
-            },
-            {
-                "url": "https://en.ch.com/static/InternalTermsConditions",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Chcom.png",
-                "text": "Chcom"
-            },
-            {
-                "url": "https://global.csair.com/ES/ES/change-refund?PROTOCOL_SWITCH=TRUE",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/ChinaSouthern.svg",
-                "text": "China Southern Airlines"
-            },
-            {
-                "url": "https://www.copaair.com/es/web/co/contrato-transporte",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/CopaAirlines.svg",
-                "text": "Copa\n                        Airlines"
-            },
-            {
-                "url": "https://es.delta.com/lac/es/legal/contract-of-carriage-igr",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Delta.svg",
-                "text": "Delta"
-            },
-            {
-                "url": "https://clicair.co/files/otros/Contrato_de_Transporte_CLIC.pdf",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/EasyFly.png",
-                "text": "Easyfly"
-            },
-            {
-                "url": "https://www.easyjet.com/es/terminos-y-condiciones",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Easyjet.png",
-                "text": "Easyjet"
-            },
-            {
-                "url": "https://www.emirates.com/es/spanish/images/spanish%20final%2010may2012_tcm466-194795.pdf",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Emirates.svg",
-                "text": "Emirates"
-            },
-            {
-                "url": "https://www.ethiopianairlines.com/AA/ES/information/essential/conditions-of-carriage",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Ethiopian.svg",
-                "text": "Ethiopian Airlines"
-            },
-            {
-                "url": "https://www.eurowings.com/es/legal/informacion-legal.html",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Eurowings.png",
-                "text": "Eurowings"
-            },
-            {
-                "url": "https://www.voegol.com.br/pt/contrato-de-transporte-aereo/",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Gool.svg",
-                "text": "Gol"
-            },
-            {
-                "url": "https://www.hahnair.com/es/hahn-air-lines/downloads",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/HanhAir.svg",
-                "text": "Hahnair"
-            },
-            {
-                "url": "https://www.iberia.com/co/condiciones-transporte/",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Iberia.svg",
-                "text": "Iberia"
-            },
-            {
-                "url": "https://www.jet2.com/terms",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Jet2.png",
-                "text": "Jer2"
-            },
-            {
-                "url": "https://www.jetblue.com/p/jetblue_coc_esp.pdf",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/JetBlue.svg",
-                "text": "JetBlue"
-            },
-            {
-                "url": "https://home-assets.jetsmart.com/co/es/tyc/condiciones-generales",
-                "img": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://jetsmart.com/co/es/?locale=es_AR&size=16",
-                "text": "Jetsmart"
-            },
-            {
-                "url": "https://www.klm.com/travel/cl_es/customer_support/customer_support/all_about_customer_support/index.htm",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Klm.svg",
-                "text": "KLM"
-            },
-            {
-                "url": "https://www.koreanair.com/contents/footer/terms-and-policies/terms-of-carriage",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/KoreanAir.svg",
-                "text": "Korean\n                        Air"
-            },
-            {
-                "url": "https://www.avianca.com/co/es/sobre-nosotros/informacion-legal/contrato-transporte/",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Lacsa.svg",
-                "text": "Lacsa"
-            },
-            {
-                "url": "https://www.latam.com/es_co/transparencia/condiciones-del-contrato-de-transporte/",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Latam.svg",
-                "text": "Latam"
-            },
-            {
-                "url": "https://www.lufthansa.com/content/dam/lh/documents/common/terms-and-conditions/terms-of-service/abb_05_2018_ES.pdf",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Lufthansa.svg",
-                "text": "Lufthansa"
-            },
-            {
-                "url": "https://www.qantas.com/us/en.html",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Qantas.svg",
-                "text": "Qantas"
-            },
-            {
-                "url": "https://www.satena.com/viewer.php?id=19&&rlsk=%27YUhSMGNITTZMeTkzZDNjdWMyRjBaVzVoTG1OdmJTOWtiMk4xYldWdWRHOXpMMlpwYkdWekwwTlBUbFJTUVZSUElFUkZJRlJTUVU1VFVFOVNWRVVnVTBGVVJVNUJJRlkxSURJd01qTWdRVkJTVDBKQlJFOGdRVVZTVDA1QlZWUkpRMEV1Y0dSbQ==%27",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Satena.png",
-                "text": "Satena"
-            },
-            {
-                "url": "https://www.singaporeair.com/en_UK/sg/global_footer/conditions-carriage/",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/SingaporeAirlines.svg",
-                "text": "Singapore Airlines"
-            },
-            {
-                "url": "https://www.starperu.com/es/contrato-de-transporte",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/StarPeru.svg",
-                "text": "Star\n                        perú"
-            },
-            {
-                "url": "https://www.taag.com/en-gb/taag/conditions-of-carriage/",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Taag.svg",
-                "text": "Taag "
-            },
-            {
-                "url": "https://www.avianca.com/co/es/sobre-nosotros/informacion-legal/contrato-transporte/",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Taca.svg",
-                "text": "Taca "
-            },
-            {
-                "url": "https://www.tame.com.ec/index.php/es/contrato-de-transporte",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Tame.svg",
-                "text": "Tame"
-            },
-            {
-                "url": "https://www.flytap.com/es-co/condiciones-de-transporte",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/TapPortugal.svg",
-                "text": "Tap\n                        Portugal"
-            },
-            {
-                "url": "https://www.transavia.com/es-ES/servicio/atencion-al-cliente/",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/Transavia.png",
-                "text": "Transavia"
-            },
-            {
-                "url": "https://www.turkishairlines.com/en-int/any-questions/flight-cancelations-and-change-questions",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/TurkishAirlines.svg",
-                "text": "Turkish Airlines"
-            },
-            {
-                "url": "https://www.united.com/web/es/content/contract.aspx",
-                "img": "https://prod-bco.netactica.com/portals/27/Images/Aerolineas/United.svg",
-                "text": "United\n                        Airlines"
-            },
-            {
-                "url": "https://www.vivaaerobus.com/es-mx/legal/terminos-y-condiciones",
-                "img": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.vivaaerobus.com/es-mx/legal/terminos-y-condiciones?locale=es_AR&size=16",
-                "text": "Viva Aerobus"
-            },
-            {
-                "url": "https://cms.volaris.com/globalassets/pdfs/esp/contrato-de-transporte-aereo-nacional.pdf",
-                "img": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://cms.volaris.com/es/informacion-util/?locale=es_AR&size=16",
-                "text": "Volaris"
-            },
-            {
-                "url": "https://storage.googleapis.com/gcp-wingo-pro-public/docs/contrato-transporte.pdf",
-                "img": "https://t0.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=https://www.wingo.com?locale=es_AR&size=16",
-                "text": "Wingo"
-            }
-        ]
-
-        
-
-            let container = document.querySelector("#aerolineas");
-            let row = document.createElement("div");
-            row.classList="row";
-            data.forEach(aero=>{
-                let colum = document.createElement("div");
-                colum.classList="col-xs-6 col-sm-6 col-md-2 col-lg-2 panel-aerolinea";
-                let card= document.createElement("div");
-                card.classList="content-aerolinea";
-                let a = document.createElement("a");
-                a.setAttribute("target","_blank");
-                a.href=aero.url;
-                a.textContent=aero.text
-                let img = document.createElement("img");
-                img.src = aero.img;
-                let span = document.createElement("span");
-                span.textContent=aero.text
-                card.appendChild(a);
-                card.appendChild(img);
-                card.appendChild(span);
-                colum.appendChild(card);
-                row.append(colum)
-            })
-container.append(row)
-
+        async function loadData() { try { var e = await (await fetch("https://edeyson.github.io/net-aerolineas/aerolineas.json")).json(); readDom(data = e) } catch (e) { console.error("Error al cargar los datos:", e) } } function readDom(e) { var t = document.querySelector("#aerolineas"); let l = document.createElement("div"); l.classList = "row", e.forEach(e => { var t = document.createElement("div"), a = (t.classList = "col-xs-6 col-sm-6 col-md-2 col-lg-2 panel-aerolinea", document.createElement("div")), n = (a.classList = "content-aerolinea", document.createElement("a")), o = (n.setAttribute("target", "_blank"), n.href = e.url, n.textContent = e.text, document.createElement("img")), r = (o.src = e.img, document.createElement("span")); r.textContent = e.text, a.appendChild(n), a.appendChild(o), a.appendChild(r), t.appendChild(a), l.append(t) }), t.append(l) } loadData();
     </script>
 </body>
+
 </html>
